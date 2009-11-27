@@ -10,7 +10,7 @@ The following schematic possibly shows how to wire up a circuit for
 remote control.  I'm more of a hacker than an EE, so please criticize
 if anything here is confusing.
 
-![schematic](http://img.skitch.com/20091127-qpbmhu89rnbw69u3thtsx2te1g.png)
+![schematic](http://github.com/dustin/arduino-2406/raw/gh-pages/2406-example.png)
 
 [ds2406]: http://www.maxim-ic.com/quick_view2.cfm/qv_pk/2907
 [a1wire]: http://www.arduino.cc/playground/Learning/OneWire
