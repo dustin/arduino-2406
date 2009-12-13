@@ -72,6 +72,7 @@ void loop(void)
     while(ow.search(addr) == 1) {
         if ( OneWire::crc8( addr, 7) != addr[7]) {
             DEBUG_PRINT("CRC is not valid!\n");
+            delay(1000);
             return;
         }
 
@@ -85,9 +86,8 @@ void loop(void)
         if(addr[0] == DS2406_FAMILY) {
             flipSwitch(addr);
         }
-
-        delay(1000);
     }
+    delay(1000);
 }
 
 
