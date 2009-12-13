@@ -19,6 +19,7 @@
 
 // On which pin will you put the 1wire bus?
 OneWire ow(7);
+bool foundDevice = false;
 
 void setup(void)
 {
@@ -69,6 +70,11 @@ void loop(void)
 
     ow.reset_search();
 
+    // Set the LED state to the previous iteration's found state.
+    digitalWrite(13, foundDevice ? HIGH : LOW);
+    // Assume we can't find something until we prove otherwise.
+    foundDevice = false;
+
     while(ow.search(addr) == 1) {
         if ( OneWire::crc8( addr, 7) != addr[7]) {
             DEBUG_PRINT("CRC is not valid!\n");
@@ -84,6 +90,8 @@ void loop(void)
 
         // At this point, we know we have a DS2406.  Blink it.
         if(addr[0] == DS2406_FAMILY) {
+            foundDevice = true;
+            digitalWrite(13, HIGH);
             flipSwitch(addr);
         }
     }
