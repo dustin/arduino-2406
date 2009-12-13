@@ -17,6 +17,7 @@
 #define DEBUG_PRINT(a)
 #endif /* DEBUG_OUT */
 
+// On which pin will you put the 1wire bus?
 OneWire ow(7);
 
 void setup(void)
