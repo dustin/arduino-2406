@@ -14,7 +14,7 @@ bool OneWireSwitch::getSwitchState(int port) {
 }
 
 void OneWireSwitch::setSwitchState(bool pio_a, bool pio_b) {
-    uint8_t state = (pio_a << 5) | (pio_b << 6) | 0xf;
+    uint8_t state = (!pio_a << 5) | (!pio_b << 6) | 0xf;
     bus->reset();
     bus->select(address);
     bus->write(DS2406_WRITE_STATUS);
