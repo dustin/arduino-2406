@@ -10,6 +10,8 @@
 #define PIO_A 0x20
 #define PIO_B 0x40
 
+#define DS2406_STATE_BUF_LEN 10
+
 // Represents a single 1wire switch on an MLan.
 class OneWireSwitch {
 

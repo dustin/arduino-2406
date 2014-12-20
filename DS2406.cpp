@@ -8,7 +8,7 @@ OneWireSwitch::OneWireSwitch(OneWire *b, uint8_t *addr) {
 }
 
 bool OneWireSwitch::getSwitchState(int port) {
-    uint8_t status[10];
+    uint8_t status[DS2406_STATE_BUF_LEN];
     readStatus(status);
     return (status[7] & port) == 0;
 }
@@ -37,9 +37,8 @@ void OneWireSwitch::readStatus(uint8_t *buffer) {
     bus->write(0, 1);
     bus->write(0, 1);
 
-    for(int i = 0; i<10; i++) {
+    for(int i = 0; i<DS2406_STATE_BUF_LEN; i++) {
         buffer[i] = bus->read();
     }
     bus->reset();
 }
-
