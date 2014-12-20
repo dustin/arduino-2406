@@ -10,7 +10,7 @@ OneWireSwitch::OneWireSwitch(OneWire *b, uint8_t *addr) {
 bool OneWireSwitch::getSwitchState(int port) {
     uint8_t status[10];
     readStatus(status);
-    return status[7] & port;
+    return (status[7] & port) == 0;
 }
 
 void OneWireSwitch::setSwitchState(bool pio_a, bool pio_b) {
