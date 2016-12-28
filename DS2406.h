@@ -1,3 +1,6 @@
+#ifndef DS2406_h
+#define DS2406_h
+
 #include <OneWire.h>
 
 #include <inttypes.h>
@@ -12,14 +15,15 @@
 
 #define DS2406_STATE_BUF_LEN 10
 
+
 // Represents a single 1wire switch on an MLan.
-class OneWireSwitch {
+class DS2406 {
 
  public:
 
     // Construct the OneWireSwitch with the given OneWire bus and address.
     // addr must be 8 bytes.
-    OneWireSwitch(OneWire *b, uint8_t *addr);
+	DS2406(OneWire *b, uint8_t *addr);
 
     // Get the switch state.
     // An optional argument indicates *which* switch state in the case
@@ -35,3 +39,5 @@ class OneWireSwitch {
 
     void readStatus(uint8_t *buffer);
 };
+
+#endif
