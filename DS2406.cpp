@@ -1,19 +1,19 @@
 #include <DS2406.h>
 
-OneWireSwitch::OneWireSwitch(OneWire *b, uint8_t *addr) {
+DS2406::DS2406(OneWire *b, uint8_t *addr) {
     bus = b;
     for(int i = 0; i<8; i++) {
         address[i] = addr[i];
     }
 }
 
-bool OneWireSwitch::getSwitchState(int port) {
+bool DS2406::getSwitchState(int port) {
     uint8_t status[DS2406_STATE_BUF_LEN];
     readStatus(status);
     return (status[7] & port) == 0;
 }
 
-void OneWireSwitch::setSwitchState(bool pio_a, bool pio_b) {
+void DS2406::setSwitchState(bool pio_a, bool pio_b) {
     uint8_t state = (!pio_a << 5) | (!pio_b << 6) | 0xf;
     bus->reset();
     bus->select(address);
@@ -30,7 +30,7 @@ void OneWireSwitch::setSwitchState(bool pio_a, bool pio_b) {
     bus->write(0xFF,1);
 }
 
-void OneWireSwitch::readStatus(uint8_t *buffer) {
+void DS2406::readStatus(uint8_t *buffer) {
     bus->reset();
     bus->select(address);
     bus->write(DS2406_READ_STATUS, 1);
