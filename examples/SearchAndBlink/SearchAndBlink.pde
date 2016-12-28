@@ -48,7 +48,7 @@ void flipSwitch(uint8_t *addr) {
     // discovering them dynamically.  Depending on your app, you may
     // already know the serial number of the device you intend to
     // control and will use it there.
-    OneWireSwitch osw(&ow, addr);
+	DS2406 osw(&ow, addr);
 
     // Turn on the switch.
     osw.setSwitchState(true);
